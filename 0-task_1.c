@@ -38,9 +38,9 @@ int _printf(const char *format, ...)
 				}
 				else if (*format == 's')
 				{
+					str = va_arg(ptr, int *);
 					for (i = 0; str[i] != '\0'; i++)
 					{
-						str = va_arg(ptr, char *);
 						putchar(str[i]);
 						count++;
 					}

@@ -6,54 +6,54 @@
   */
 int _printf(const char *format, ...)
 {
-va_list ptr;
-int count = 0, i;
-char c;
-char *str;
+	va_list ptr;
+	int count = 0, i;
+	char c;
+	char *str;
 
-if (format == 0)
-{
-putchar('(');
-putchar('n');
-putchar('u');
-putchar('l');
-putchar('l');
-putchar(')');
-putchar('\n');
-count += 7;
-}
-else
-{
-va_start(ptr, format);
-while (*format)
-{
-if (*format == '%')
-{
-format++;
-if (*format == 'c')
-{
-c = va_arg(ptr, int);
-putchar(c);
-count++;
-}
-else if (*format == 's')
-{
-str = va_arg(ptr, char *);
-for (i = 0; str[i] != '\0'; i++)
-{
-putchar(str[i]);
-count++;
-}
-}
-else if (*format == '%')
-{
-putchar('%');
-count++;
-}
-}
-format++;
-}
-}
-va_end(ptr);
-return (count);
+	if (format == 0)
+	{
+		putchar('(');
+		putchar('n');
+		putchar('u');
+		putchar('l');
+		putchar('l');
+		putchar(')');
+		putchar('\n');
+		count += 7;
+	}
+	else
+	{
+		va_start(ptr, format);
+		while (*format)
+		{
+			if (*format == '%')
+			{
+				format++;
+				if (*format == 'c')
+				{
+					c = va_arg(ptr, int);
+					putchar(c);
+					count++;
+				}
+				else if (*format == 's')
+				{
+					str = va_arg(ptr, char *);
+					for (i = 0; str[i] != '\0'; i++)
+					{
+						putchar(str[i]);
+						count++;
+					}
+				}
+				else if (*format == '%')
+				{
+					putchar('%');
+					count++;
+				}
+			}
+			format++;
+		}
+	}
+	va_end(ptr);
+	return (count);
 }

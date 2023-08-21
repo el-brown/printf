@@ -8,20 +8,23 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int count = 0;
+	int count = 0, i;
 	char c;
 	char *str;
 
-	if (format == NULL)
+	if (format == 0)
 	{
-		char *null_str = "(null)\n";
-		for (count = 0; null_str[count] != '\0'; count++)
-		{
-			putchar(null_str[count]);
-		}
-		return (count);
+		putchar('(');
+		putchar('n');
+		putchar('u');
+		putchar('l');
+		putchar('l');
+		putchar(')');
+		putchar('\n');
+		count += 7;
 	}
-
+	else
+	{
 	va_start(ptr, format);
 
 	while (*format)

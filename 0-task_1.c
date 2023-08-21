@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * _printf - print formatted output to stdout
  * @format: format string
@@ -8,23 +6,20 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int count = 0, i;
+	int count = 0;
 	char c;
 	char *str;
 
-	if (format == 0)
+	if (format == NULL)
 	{
-		putchar('(');
-		putchar('n');
-		putchar('u');
-		putchar('l');
-		putchar('l');
-		putchar(')');
-		putchar('\n');
-		count += 7;
+		char *null_str = "(null)\n";
+		for (count = 0; null_str[count] != '\0'; count++)
+		{
+			putchar(null_str[count]);
+		}
+		return (count);
 	}
-	else
-	{
+
 	va_start(ptr, format);
 
 	while (*format)

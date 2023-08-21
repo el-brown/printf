@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _printf - print formatted output to stdout
  * @format: format string
@@ -6,10 +8,9 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int count = 0;
+int count = 0;
 	char c;
 	char *str;
-
 	if (format == NULL)
 	{
 		char *null_str = "(null)\n";
@@ -26,7 +27,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;
+	format++;
 			if (*format == 'c')
 			{
 				c = va_arg(ptr, int);

@@ -1,58 +1,63 @@
 #include "main.h"
+
 /**
-  *_printf - print whatever it takes as argument
-  *Return: int
-  *@format: argument
-  */
+ * _printf - print formatted output to stdout
+ * @format: format string
+ * Return: number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int count = 0, i;
+	int count = 0;
 	char c;
 	char *str;
 
-	if (format == 0)
+	if (format == NULL)
 	{
-		putchar('(');
-		putchar('n');
-		putchar('u');
-		putchar('l');
-		putchar('l');
-		putchar(')');
-		putchar('\n');
-		count += 7;
-	}
-	else
-	{
-		va_start(ptr, format);
-		while (*format)
+		char *null_str = "(null)\n";
+		for (count = 0; null_str[count] != '\0'; count++)
 		{
-			if (*format == '%')
+			putchar(null_str[count]);
+		}
+		return (count);
+	}
+
+	va_start(ptr, format);
+
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == 'c')
 			{
-				format++;
-				if (*format == 'c')
+				c = va_arg(ptr, int);
+				putchar(c);
+				count++;
+			}
+			else if (*format == 's')
+			{
+				str = va_arg(ptr, char *);
+				if (str == NULL)
+					str = "(null)";
+				for (; *str != '\0'; str++)
 				{
-					c = va_arg(ptr, char);
-					putchar(c);
-					count++;
-				}
-				else if (*format == 's')
-				{
-					str = va_arg(ptr, char *);
-					for (i = 0; str[i] != '\0'; i++)
-					{
-						putchar(str[i]);
-						count++;
-					}
-				}
-				else if (*format == '%')
-				{
-					putchar('%');
+					putchar(*str);
 					count++;
 				}
 			}
-			format++;
+			else if (*format == '%')
+			{
+				putchar('%');
+				count++;
+			}
 		}
+		else
+		{
+			putchar(*format);
+			count++;
+		}
+		format++;
 	}
 	va_end(ptr);
 	return (count);

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-  *_printf - function that produces output according to a format
+  *_printf - print whatever it takes as argument
   *Return: int
   *@format: argument
   */

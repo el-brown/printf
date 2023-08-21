@@ -13,12 +13,14 @@ char *str;
 
 if (format == 0)
 {
-char *null = "(null)\n";
-for (i = 0; null[i] != '\0'; i++)
-{
-putchar(null[i]);
-count++;
-}
+putchar('(');
+putchar('n');
+putchar('u');
+putchar('l');
+putchar('l');
+putchar(')');
+putchar('\n');
+count += 7;
 }
 else
 {

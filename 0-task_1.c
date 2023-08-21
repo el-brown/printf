@@ -13,13 +13,13 @@ int _printf(const char *format, ...)
 
 	if (format == 0)
 	{
-		putchar('(');
-		putchar('n');
-		putchar('u');
-		putchar('l');
-		putchar('l');
-		putchar(')');
-		putchar('\n');
+		_putchar('(');
+		_putchar('n');
+		_putchar('u');
+		_putchar('l');
+		_putchar('l');
+		_putchar(')');
+		_putchar('\n');
 		count += 7;
 	}
 	else

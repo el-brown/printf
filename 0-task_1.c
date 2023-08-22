@@ -8,7 +8,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-int count = 0;
+	int count = 0, i;
 	char c;
 	char *str;
 	if (format == NULL)
@@ -27,7 +27,7 @@ int count = 0;
 	{
 		if (*format == '%')
 		{
-	format++;
+			format++;
 			if (*format == 'c')
 			{
 				c = va_arg(ptr, int);
@@ -38,10 +38,12 @@ int count = 0;
 			{
 				str = va_arg(ptr, char *);
 				if (str == NULL)
-					str = "(null)";
-				for (; *str != '\0'; str++)
 				{
-					putchar(*str);
+					str = "(null)";
+				}
+				for (i = 0; *str != '\0'; str++)
+				{
+					putchar(str[i]);
 					count++;
 				}
 			}

@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ptr;
-	int count = 0, i;
+	int count = 0, i, d;
 	char c;
 	char *str;
 	
@@ -44,6 +44,12 @@ int _printf(const char *format, ...)
 					putchar(str[i]);
 					count++;
 				}
+			}
+			else if (*format == 'i' || *format == 'd')
+			{
+				d = va_arg(ptr, int);
+				putchar(d);
+				count++;
 			}
 			else if (*format == '%')
 			{

@@ -45,12 +45,6 @@ int _printf(const char *format, ...)
 					count++;
 				}
 			}
-			else if (*format == 'i' || *format == 'd')
-			{
-				d = va_arg(ptr, int);
-				putchar(d);
-				count++;
-			}
 			else if (*format == '%')
 			{
 				putchar('%');
